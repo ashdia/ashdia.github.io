@@ -1,0 +1,203 @@
+<!DOCTYPE>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>智慧社区演示版</title>
+  <link rel="stylesheet" href="js/jquery-ui.css">
+  <script src="js/jquery-1.11.2.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+
+ 
+  <style>
+    body { font-size: 62.5%; }
+    label, input { display:block; }
+    input.text { margin-bottom:12px; width:95%; padding: .4em; }
+    fieldset { padding:0; border:0; margin-top:25px; }
+    h1 { font-size: 1.2em; margin: .6em 0; }
+    div#users-contain { width: 350px; margin: 20px 0; }
+    div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+    div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+    .ui-dialog .ui-state-error { padding: .3em; }
+    .validateTips { border: 1px solid transparent; padding: 0.3em; }
+  #dialog label, #dialog input { display:block; }
+  #dialog label { margin-top: 0.5em; }
+  #dialog input, #dialog textarea { width: 95%; }
+  #tabs { margin-top: 1em; }
+  #tabs li .ui-icon-close { float: left; margin: 0.4em 0.2em 0 0; cursor: pointer; }
+  #add_tab { cursor: pointer; }
+  </style>
+<script>
+	$(function() {
+		var tabs = $( "#tabs" ).tabs(),
+		tabTitle = $( "#tab_title" ),
+		tabContent = $( "#tab_content" ),
+		tabTemplate = "<li><a href='#{href}'>#{label}</a> <span class='ui-icon ui-icon-close' role='presentation'>Remove Tab</span></li>",
+		currentTab = null,
+		tabCounter = 2;
+	  
+		$( "#camera1" ).button().on( "click", function() {
+			$("#camera-img").attr("src", 'pics/parking3.jpg');
+		});
+		$( "#camera2" ).button().on( "click", function() {
+			$("#camera-img").attr("src", 'pics/parking4.jpg');
+		});
+		$( "#camera3" ).button().on( "click", function() {
+			$("#camera-img").attr("src", 'pics/parking2.jpg');	  
+		});
+		$( "#add-camera" ).button(
+			{
+			    icons: {primary: null},
+				text: false
+
+			}).addClass("image-button").on( "click", function() {
+
+		});
+		
+		function addTab() {
+			 var label = tabTitle.val() || "Tab " + tabCounter,
+				id = "tabs-" + tabCounter,
+				li = $( tabTemplate.replace( /#\{href\}/g, "#" + id ).replace( /#\{label\}/g, label ) ),
+				tabContentHtml = "<div id = 'camera-panel-" + id + "' class = 'inline-block' />";
+				addCameraBtn = 	"<button id= 'add-camera-" + id + "' class = 'image-button'></button>"
+				imageContainer = "<img id='camera-img-" + id + "' src='' width='600' height='450' class = 'image-centered'/>";
+				
+			 tabs.find( ".ui-tabs-nav" ).append( li );
+			 tabs.append( "<div id='" + id + "'>" + 
+				tabContentHtml + addCameraBtn + imageContainer + "</div>" );
+			  
+			  $("#add-camera-" + id).button().on( "click", function() {
+					currentTab = $(this);
+					addCameraDialog.dialog( "open" );
+			 });
+			
+			 tabs.tabs( "refresh" );
+			 tabCounter++;
+		}
+		
+		function addCamera() {
+			var id = $('#camera_name').val();	
+			currentTab.siblings('div').append( "<button id='" + id + "'>" + id + "</button>" );
+			$("#" + id).button().on( "click", function() {
+				currentTab.siblings('img').attr("src", 'pics/parking5.jpg');
+			});
+		}
+	
+		var addCameraDialog = $( "#addCameraDialog" ).dialog({
+		  autoOpen: false,
+		  modal: true,
+		  buttons: {
+			"添加": function() {
+			  addCamera();
+			  $( this ).dialog( "close" );
+			},
+			"取消": function() {
+			  $( this ).dialog( "close" );
+			}
+		  },
+		  close: function() {
+			form1[0].reset();
+		  }
+		});
+		
+		var addParkingDialog = $( "#addParkingDialog" ).dialog({
+		  autoOpen: false,
+		  modal: true,
+		  buttons: {
+			"添加": function() {
+			  addTab();
+			  $( this ).dialog( "close" );
+			},
+			"取消": function() {
+			  $( this ).dialog( "close" );
+			}
+		  },
+		  close: function() {
+			form[0].reset();
+		  }
+		});
+		
+		var form = addParkingDialog.find( "form" ).submit(function( event ) {
+		  addTab();
+		  addParkingDialog.dialog( "close" );
+		  event.preventDefault();
+		});
+		
+		var form1 = addCameraDialog.find( "form" ).submit(function( event ) {
+		  addCamera();
+		  addCameraDialog.dialog( "close" );
+		  event.preventDefault();
+		});
+		
+		$( "#add_tab" )
+		  .button()
+		  .click(function() {
+			addParkingDialog.dialog( "open" );
+		  });
+	  
+	  	$( "#add-camera" )
+		  .button()
+		  .click(function() {
+			currentTab = $(this);
+			addCameraDialog.dialog( "open" );
+		});
+		  
+		tabs.delegate( "span.ui-icon-close", "click", function() {
+		  var panelId = $( this ).closest( "li" ).remove().attr( "aria-controls" );
+		  $( "#" + panelId ).remove();
+		  tabs.tabs( "refresh" );
+		});
+ 
+		tabs.bind( "keyup", function( event ) {
+		  if ( event.altKey && event.keyCode === $.ui.keyCode.BACKSPACE ) {
+			var panelId = tabs.find( ".ui-tabs-active" ).remove().attr( "aria-controls" );
+			$( "#" + panelId ).remove();
+			tabs.tabs( "refresh" );
+		  }
+		});
+	});
+</script> 
+</head>
+
+<body>
+	<div id = "main-div">
+		<h1 class = 'main-title align-center' style = "margin-top: 50px">停车场实时监控</h1>
+	<div>
+	
+	<button id="add_tab">添加停车场</button>
+	
+	<div id="addParkingDialog" title="添加停车场">
+	  <form>
+		<fieldset class="ui-helper-reset">
+		  <label for="tab_title">停车场名称</label>
+		  <input type="text" name="tab_title" id="tab_title" class="ui-widget-content ui-corner-all" style = 'width : 280px; margin-top: 10px;'>
+		</fieldset>
+	  </form>
+	</div>
+
+	<div id="addCameraDialog" title="添加监控">
+	  <form>
+		<fieldset class="ui-helper-reset">
+		  <label for="camera_name">监控点名称</label>
+		  <input type="text" name="camera_name" id="camera_name" class="ui-widget-content ui-corner-all" style = 'width : 280px; margin-top: 10px;'>
+		</fieldset>
+	  </form>
+	</div>
+	
+	<div id="tabs">
+	  <ul>
+		<li><a href="#tabs-1">停车场-1</a> <span class="ui-icon ui-icon-close" role="presentation">Remove Tab</span></li>
+	  </ul>
+	  <div id="tabs-1">
+		<div id = 'camera-panel' class = 'inline-block'>
+			<button id="camera1" class = "option-btn">监控A</button>
+			<button id="camera2" class = "option-btn">监控B</button>
+			<button id="camera3" class = "option-btn">监控C</button>
+		</div>
+		<button id= "add-camera" class = "image-button"></button>
+		<img id="camera-img" src="" width="600" height="450" class = 'image-centered'/>
+	  </div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,106 @@
+<!DOCTYPE>
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <title>智慧社区演示版</title>
+  <link rel="stylesheet" href="js/jquery-ui.css">
+  <script src="js/jquery-1.11.2.js"></script>
+  <script src="js/jquery-ui.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+
+ 
+  <style>
+    body { font-size: 62.5%; }
+    label, input { display:block; }
+    input.text { margin-bottom:12px; width:95%; padding: .4em; }
+    fieldset { padding:0; border:0; margin-top:25px; }
+    h1 { font-size: 1.2em; margin: .6em 0; }
+    div#users-contain { width: 350px; margin: 20px 0; }
+    div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
+    div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
+    .ui-dialog .ui-state-error { padding: .3em; }
+    .validateTips { border: 1px solid transparent; padding: 0.3em; }
+	
+	.ui-progressbar {
+		position: absolute;
+		left: 25%;
+		top: 40%;
+		width: 500px;
+	}
+	.progress-label {
+		position: absolute;
+		left: 45%;
+		top: 30%;
+		font-weight: bold;
+		text-shadow: 1px 1px 0 #fff;
+	}
+  </style>
+<script>
+	$(function() {	
+		$( "#start-navi" ).button().on( "click", function() {
+			$('#progressbar').show();
+			 setTimeout( progress, 2000 );
+		});
+		
+		 var progressbar = $( "#progressbar" ),
+      progressLabel = $( ".progress-label" );
+ 
+    progressbar.progressbar({
+      value: false,
+      change: function() {
+        progressLabel.text( progressbar.progressbar( "value" ) + "%" );
+      },
+      complete: function() {
+        $("#navi-img").attr("src", "pics/gps2-navi.jpg");
+		$('#progressbar').hide();
+		progressbar.progressbar( "value", 0 );
+      }
+    });
+ 
+    function progress() {
+      var val = progressbar.progressbar( "value" ) || 0;
+ 
+      progressbar.progressbar( "value", val + 2 );
+ 
+      if ( val < 99 ) {
+        setTimeout( progress, 80 );
+      }
+    }
+	
+		$('#progressbar').hide();
+	});
+</script>
+</head>
+
+<body>
+	<div id = "main-div">
+		<h1 class = 'main-title align-center' style = "margin-top: 50px">社区导航</h1>
+	<div>
+
+	<div style = "margin-top: 45px; margin-left: 80px;">
+		<table id = 'user-info' style = 'padding: 10px;' class = 'border-container'>
+			<tr>
+				<td class = 'cell-text'>户主名：Garry 熊<td>	
+			</tr>
+			<tr>
+				<td  class = 'cell-text'>车牌号：苏A 88888<td>		
+			</tr>
+			<tr>
+				<td  class = 'cell-text'>停车位：36D<td>		
+			</tr>
+		</table>
+		
+		<button id= "start-navi" style = 'margin-top: 20px;'>开始导航</button>
+	</div>
+	<div id = 'navi-container'>
+		<div id="progressbar"><div class="progress-label">开始规划路线...</div></div>
+		<img id="navi-img"  class = 'border-container'  src="pics/gps2.jpg" width="1000" height="600" border = '0'/>
+	</div>
+	
+	<div id="alert-box" title="信息">
+		<p id = "msg-strip"></p>
+	</div>
+
+</body>
+</html>

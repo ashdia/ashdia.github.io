@@ -1,0 +1,90 @@
+#main-div
+{
+	
+}
+
+.main-title
+{
+	font-size: 2.0em; 
+	margin: .6em 0;
+	color: grey;
+}
+
+.centered {
+  position: fixed; /* or absolute */
+  top: 10%;
+  left: 42%;
+  /*margin-top: -50px;
+  margin-left: -100px;*/
+}
+
+.btn-block
+{
+	margin-top: 40px;
+}
+
+.align-center
+{
+	text-align: center;
+}
+
+.footer
+{
+	margin-top: 20px;
+	font-size: 0.5em;
+	color: grey;	
+}
+
+.footer-login
+{
+	margin-top: -15px;
+	font-size: 0.5em;
+	color: #383838;
+}
+
+.image-centered {
+  /*position: fixed; */ /* or absolute */
+  /*top: 20%; */
+  /*left: 50%;  */
+  /*margin-left: -300px; */
+  margin-top: 30px;
+  display: block;
+}
+
+.inline-block
+{
+	display: inline-block;
+}
+
+.cell-text
+{
+	font: 20px arial sans-serif;
+}
+
+.image-button
+{
+	background: url('C:/Users/jennie/Desktop/ÖÇ»Û³ÇÊÐ/demo/pics/add.jpg') no-repeat !important;
+	background-size:  cover !important;
+	border: none !important;
+	width: 30px;
+	height: 30px;
+	margin-left: 9px;
+}
+
+#user-info td
+{
+	padding: 5px;
+}
+
+#navi-container
+{
+	position: absolute;
+	top: 120px;
+	left: 450px;
+}
+
+.border-container
+{
+	border: 2px solid #a1a1a1;
+	border-radius: 25px;
+}
