@@ -32,10 +32,10 @@
     	
 		function loginFunc() {
     		 if($('#userName').val().length == 0){  
-	              $('#msg').text("ÓÃ»§Ãû²»ÄÜÎª¿Õ");   
+	              $('#msg').text("用户名错误");   
 	         }
              else if($('#password').val().length == 0) {
-             	   $('#msg').text("ÃÜÂë²»ÄÜÎª¿Õ");
+             	   $('#msg').text("密码错误");
              }
              else{
 				window.location.href = "front.html";
@@ -46,13 +46,13 @@
 			fieldInit($('#password-sign'), $('#passwordHint-sign'), 1);
 			fieldInit($('#email-sign'), $('#emailHint-sign'), 1);	
 			 if($('#userName-sign').val().length == 0){  
-				  $('#msg-sign').text("ÓÃ»§Ãû²»ÄÜÎª¿Õ");   
+				  $('#msg-sign').text("用户名错误");   
 			 }
 			 else if($('#password-sign').val().length == 0) {
-				   $('#msg-sign').text("ÃÜÂë²»ÄÜÎª¿Õ");
+				   $('#msg-sign').text("密码错误");
 			 }
 			 else if($('#email-sign').val().length == 0) {
-				   $('#msg-sign').text("ÓÊÏä²»ÄÜÎª¿Õ");
+				   $('#msg-sign').text("Email错误");
 			 }
 	    }
 		  
