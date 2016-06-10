@@ -3,120 +3,143 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>智慧社区演示版</title>
+  <title>脰脟禄脹脡莽脟酶脩脻脢戮掳忙</title>
   <link rel="stylesheet" href="js/jquery-ui.css">
   <script src="js/jquery-1.11.2.js"></script>
   <script src="js/jquery-ui.js"></script>
   <link rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="Stylesheet" href="css/login.css" />
+    <script language="javascript"> 
+    	$(function() { 
+    		registerKeyHandler($('#loginBTN'), loginFunc);
+            registerClickHandler($('#loginBTN'), loginFunc);
+            registerClickHandler($('#signupBTN'), signupFunc);
 
- 
-  <style>
-    body { font-size: 62.5%; }
-    label, input { display:block; }
-    input.text { margin-bottom:12px; width:95%; padding: .4em; }
-    fieldset { padding:0; border:0; margin-top:25px; }
-    h1 { font-size: 1.2em; margin: .6em 0; }
-    div#users-contain { width: 350px; margin: 20px 0; }
-    div#users-contain table { margin: 1em 0; border-collapse: collapse; width: 100%; }
-    div#users-contain table td, div#users-contain table th { border: 1px solid #eee; padding: .6em 10px; text-align: left; }
-    .ui-dialog .ui-state-error { padding: .3em; }
-    .validateTips { border: 1px solid transparent; padding: 0.3em; }
-  </style>
-<script>
-	$(function() {
-	  var dialog, form,
-      name = $( "#name" ),
-      phone = $( "#phone" ),
-      plateNo = $( "#plateNo" ),
-	  roomNo = $( "#roomNo" ),  
-      allFields = $( [] ).add(name).add(phone).add(plateNo).add(roomNo);
-	
-	 dialog = $( "#dialog-form" ).dialog({
-      autoOpen: false,
-      width: 350,
-      modal: true,
-      buttons: {
-        "预约": bookSpot,
-        "取消": function() {
-          dialog.dialog( "close" );
-        }
-      },
-      close: function() {
-        form[ 0 ].reset();
-        allFields.removeClass( "ui-state-error" );
-      }
-    });
-	
-		
-	form = dialog.find( "form" ).on( "submit", function( event ) {
-      event.preventDefault();
-      //addUser();
-    });
-	
-	var alertDialog = $( "#alert-box" ).dialog({
-      autoOpen: false,
-      width: 200,
-      modal: true,
-      buttons: {
-        "确定": function() {
-          alertDialog.dialog( "close" );
-        }
-      }
-    });
-	 
-	$( "#book-btn" ).button().on( "click", function() {
-		dialog.dialog( "open" );
-	});
-	$( "#navigate-btn" ).button().on( "click", function() {
-	   //window.open("navi.html", "_blank", "width=800, height=800");
-		window.location.href = "navi.html";	   
-	});
-	$( "#monitor-btn" ).button().on( "click", function() {
-	   //window.open("monitor.html", "_blank", "width=800, height=800");
-	   	window.location.href = "monitor.html";
-	});
-	
-	function bookSpot() {
-		alertDialog.find('#msg-strip').text('预约成功！预约车位：65号');
-		alertDialog.dialog("open");
-		dialog.dialog("close");
-	}
-	
-	});
-</script>
-</head>
-
-<body>
-	<div id = "main-div" class = "centered">
-		<h1 class = 'main-title align-center'>智能停车管理</h1>
-		<div class = 'btn-block align-center'>
-			<button id="book-btn" class = "option-btn">预约</button>
-			<button id="monitor-btn" class = "option-btn">监控</button>			
-			<button id="navigate-btn" class = "option-btn">导航</button>
-		</div>
-		<div class = 'footer align-center'>Copyright @ 2015 智宇云科技有限公司</div>
-	<div>
-
-	<div id="dialog-form" title="车位预约">
-	  <form>
-		<fieldset>
-		  <label for="name">访客姓名</label>
-		  <input type="text" name="name" id="name" class="text ui-widget-content ui-corner-all">
-		  <label for="phone">访客电话</label>
-		  <input type="text" name="phone" id="phone" class="text ui-widget-content ui-corner-all">
-		  <label for="plateNo">车牌号</label>
-		  <input type="text" name="plateNo" id="plateNo" class="text ui-widget-content ui-corner-all">
-	 	  <label for="roomNo">房号</label>
-		  <input type="text" name="roomNo" id="roomNo" class="text ui-widget-content ui-corner-all">
+			fieldInit($('#userName'), $('#userNameHint'), 0);
+			fieldInit($('#password'), $('#passwordHint'), 0);
+			fieldInit($('#userName-sign'), $('#userNameHint-sign'), 1);
+			fieldInit($('#password-sign'), $('#passwordHint-sign'), 1);
+			fieldInit($('#email-sign'), $('#emailHint-sign'), 1);												  	
+	    	$('#signup-label').click(function() {
+	    		if($('#signup-panel').is(":hidden")) {
+	    			$('#signup-panel').slideDown("slow");
+	    		}
+	    		else {
+	    			$('#signup-panel').slideUp("slow");
+	    		}
+	    	});
+    	}); 
+    	
+		function loginFunc() {
+    		 if($('#userName').val().length == 0){  
+	              $('#msg').text("脫脙禄搂脙没虏禄脛脺脦陋驴脮");   
+	         }
+             else if($('#password').val().length == 0) {
+             	   $('#msg').text("脙脺脗毛虏禄脛脺脦陋驴脮");
+             }
+             else{
+				window.location.href = "front.html";
+             } 
+          }
+		  function signupFunc() {
+			fieldInit($('#userName-sign'), $('#userNameHint-sign'), 1);
+			fieldInit($('#password-sign'), $('#passwordHint-sign'), 1);
+			fieldInit($('#email-sign'), $('#emailHint-sign'), 1);	
+			 if($('#userName-sign').val().length == 0){  
+				  $('#msg-sign').text("脫脙禄搂脙没虏禄脛脺脦陋驴脮");   
+			 }
+			 else if($('#password-sign').val().length == 0) {
+				   $('#msg-sign').text("脙脺脗毛虏禄脛脺脦陋驴脮");
+			 }
+			 else if($('#email-sign').val().length == 0) {
+				   $('#msg-sign').text("脫脢脧盲虏禄脛脺脦陋驴脮");
+			 }
+	    }
 		  
-		  <input type="submit" tabindex="-1" style="position:absolute; top:-1000px">
-		</fieldset>
-	  </form>
-	</div>
-
-	<div id="alert-box" title="信息">
-		<p id = "msg-strip"></p>
-	</div>
-
+    	function fieldInit(field, fieldHint, loginOrSign) {
+    		if(field.val().length != 0) {
+	    		fieldHint.hide();
+	    	}
+	    	fieldHint.click(function() {
+	    		fieldHint.hide();
+	    		field.focus();
+	    	});
+	    	field.focus(function() {
+	    		fieldHint.hide();
+	    	});
+	    	field.blur(function() {
+	    		if(field.val().length == 0) {
+	    			fieldHint.show();
+	    		}
+	    		else {
+	    			fieldHint.hide();
+	    		}
+	    	});	  
+	    	if(loginOrSign == 0) {
+	    		registerKeyHandler(field, loginFunc);
+	    	}
+	    	else {
+	    		registerKeyHandler(field, signupFunc);
+	    	}
+    	} 
+   
+          function registerKeyHandler(field, func) {
+          	field.keypress(function(e) {
+          		if(e.which == 13) {
+          			func();
+          		}
+          	});
+          }
+		
+		function registerClickHandler(field, func) {
+          	field.click(func);
+        }
+    </script>
+</head>
+<body style = "background-color:#5e7572;">
+<div>
+   <div id = "nav-bar">
+   	  <div id = "nav-bar-content">
+   	  </div>
+   </div>
+   <h1 class = 'align-center' style = "margin-top: 120px; color: #383838; font-size: 40px;">鏅烘収绀惧尯1.0</h1>
+   <div class = 'footer-login align-center'>Copyright @ 2015 鏅哄畤绉戞妧鏈夐檺鍏徃</div>
+   <div id = "loginPage-container">
+   	  <div id = "content-container">
+   	  	<div id = "login-panel">
+   	  		<div id = "userNameDiv"  class = "userNameDiv">
+   	  			<input type = "text" id = "userName" class = "userName" />
+   	  			<span class = "span-hint" id = "userNameHint">鐢ㄦ埛鍚�</span>
+   	  		</div>
+   	  		<div id = "passwordDiv">
+   	  			<input type = "password" id = "password" />
+   	  			<span class = "span-hint" id = "passwordHint">瀵嗙爜</span>
+   	  		</div>
+   	  		<div id = "msg"></div>
+   	  		<button id = "loginBTN" class = "submitBTN">鐧诲綍</button>
+   	  	</div>
+   	  	<div id = "signup-div">
+  	  		<span id = "signup-reminder">棣栨浣撻獙 ?</span><span id = "signup-label">娉ㄥ唽</span>
+   	  		<div id = "signup-panel">
+   	  			<div id = "userNameDiv-sign" class = "userNameDiv">
+   	  				<input type = "text" id = "userName-sign" class = "userName" />
+   	  				<span class = "span-hint" id = "userNameHint-sign">鐢ㄦ埛鍚�</span>
+	   	  		</div>
+	   	  		<div id = "passwordDiv-sign"  class = "userNameDiv">
+	   	  			<input type = "password" id = "password-sign" class = "userName" />
+	   	  			<span class = "span-hint" id = "passwordHint-sign">瀵嗙爜</span>
+	   	  		</div>
+	   	  		<div id = "emailDiv-sign"  class = "userNameDiv">
+	   	  			<input type = "text" id = "email-sign" class = "userName"/>
+	   	  			<span class = "span-hint" id = "emailHint-sign">閭</span>
+	   	  		</div>
+	   	  		<div id = "msg-sign"></div>
+	   	  		<button id = "signupBTN" class = "submitBTN">鐧诲綍</button>
+   	  		</div>
+   	  	</div>
+   	  	<div id = "welcome-img"></div>
+   	  </div>
+   </div>
+</div>
 </body>
 </html>

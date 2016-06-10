@@ -3,7 +3,7 @@
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=gb2312">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-  <title>ÖÇ»ÛÉçÇøÑİÊ¾°æ</title>
+  <title>åœè½¦åœºå®æ—¶ç›‘æ§</title>
   <link rel="stylesheet" href="js/jquery-ui.css">
   <script src="js/jquery-1.11.2.js"></script>
   <script src="js/jquery-ui.js"></script>
@@ -88,11 +88,11 @@
 		  autoOpen: false,
 		  modal: true,
 		  buttons: {
-			"Ìí¼Ó": function() {
+			"ÃŒÃ­Â¼Ã“": function() {
 			  addCamera();
 			  $( this ).dialog( "close" );
 			},
-			"È¡Ïû": function() {
+			"ÃˆÂ¡ÃÃ»": function() {
 			  $( this ).dialog( "close" );
 			}
 		  },
@@ -105,11 +105,11 @@
 		  autoOpen: false,
 		  modal: true,
 		  buttons: {
-			"Ìí¼Ó": function() {
+			"ç¡®å®š": function() {
 			  addTab();
 			  $( this ).dialog( "close" );
 			},
-			"È¡Ïû": function() {
+			"å–æ¶ˆ": function() {
 			  $( this ).dialog( "close" );
 			}
 		  },
@@ -162,24 +162,24 @@
 
 <body>
 	<div id = "main-div">
-		<h1 class = 'main-title align-center' style = "margin-top: 50px">Í£³µ³¡ÊµÊ±¼à¿Ø</h1>
+		<h1 class = 'main-title align-center' style = "margin-top: 50px">ÃÂ£Â³ÂµÂ³Â¡ÃŠÂµÃŠÂ±Â¼Ã Â¿Ã˜</h1>
 	<div>
 	
-	<button id="add_tab">Ìí¼ÓÍ£³µ³¡</button>
+	<button id="add_tab">æ·»åŠ åœè½¦åœº</button>
 	
-	<div id="addParkingDialog" title="Ìí¼ÓÍ£³µ³¡">
+	<div id="addParkingDialog" title="æ·»åŠ åœè½¦åœº">
 	  <form>
 		<fieldset class="ui-helper-reset">
-		  <label for="tab_title">Í£³µ³¡Ãû³Æ</label>
+		  <label for="tab_title">åœè½¦åœºåç§°</label>
 		  <input type="text" name="tab_title" id="tab_title" class="ui-widget-content ui-corner-all" style = 'width : 280px; margin-top: 10px;'>
 		</fieldset>
 	  </form>
 	</div>
 
-	<div id="addCameraDialog" title="Ìí¼Ó¼à¿Ø">
+	<div id="addCameraDialog" title="ÃŒÃ­Â¼Ã“Â¼Ã Â¿Ã˜">
 	  <form>
 		<fieldset class="ui-helper-reset">
-		  <label for="camera_name">¼à¿ØµãÃû³Æ</label>
+		  <label for="camera_name">Â¼Ã Â¿Ã˜ÂµÃ£ÃƒÃ»Â³Ã†</label>
 		  <input type="text" name="camera_name" id="camera_name" class="ui-widget-content ui-corner-all" style = 'width : 280px; margin-top: 10px;'>
 		</fieldset>
 	  </form>
@@ -187,13 +187,13 @@
 	
 	<div id="tabs">
 	  <ul>
-		<li><a href="#tabs-1">Í£³µ³¡-1</a> <span class="ui-icon ui-icon-close" role="presentation">Remove Tab</span></li>
+		<li><a href="#tabs-1">åœè½¦åœº-1</a> <span class="ui-icon ui-icon-close" role="presentation">Remove Tab</span></li>
 	  </ul>
 	  <div id="tabs-1">
 		<div id = 'camera-panel' class = 'inline-block'>
-			<button id="camera1" class = "option-btn">¼à¿ØA</button>
-			<button id="camera2" class = "option-btn">¼à¿ØB</button>
-			<button id="camera3" class = "option-btn">¼à¿ØC</button>
+			<button id="camera1" class = "option-btn">ç›‘æ§A</button>
+			<button id="camera2" class = "option-btn">ç›‘æ§B</button>
+			<button id="camera3" class = "option-btn">ç›‘æ§C</button>
 		</div>
 		<button id= "add-camera" class = "image-button"></button>
 		<img id="camera-img" src="" width="600" height="450" class = 'image-centered'/>
