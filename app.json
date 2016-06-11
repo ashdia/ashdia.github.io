@@ -1,0 +1,36 @@
+{
+  "name": "smart city",
+  "description": "This app is demo version of smart city",
+  "keywords": [
+    "smart city",
+    "AI"
+  ],
+  "website": "https://ashdia.smartcity.com/",
+  "repository": "https://github.com/ashdia/ashdia.github.io.git",
+  //  "logo": "https://small-sharp-tool.com/logo.svg",
+  "success_url": "/",
+  "scripts": {},
+  "env": {
+    "SECRET_TOKEN": {
+      "description": "A secret key for verifying the integrity of signed cookies.",
+      "generator": "secret"
+    },
+    "WEB_CONCURRENCY": {
+      "description": "The number of processes to run.",
+      "value": "1"
+    }
+  },
+  "formation": {
+    "web": {
+      "quantity": 1,
+      "size": "Performance-M"
+    }
+  },
+  "image": "heroku/nodejs",
+  "addons": [],
+  "buildpacks": [
+    {
+      "url": "heroku/nodejs"
+    }
+  ]
+}
