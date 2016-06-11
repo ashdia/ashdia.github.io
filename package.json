@@ -1,7 +1,9 @@
 {
   "name": "ashdia",
   "version": "0.0.0",
-  "scripts": {},
+  "scripts": {
+     "start": "node server.js"
+  },
   "devDependencies": {},
   "dependencies": {},
   "optionalDependencies": {}
